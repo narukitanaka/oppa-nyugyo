@@ -1,0 +1,1327 @@
+@use "variable"as v;
+@use "common"as c;
+/*************************************************
+  下層ページ　共通
+*************************************************/
+.under-mv {
+  padding: 16rem 0 11.7rem;
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/p-under_bg01.svg) no-repeat bottom/contain;
+  background-color: v.$bg-color02;
+  @include c.mq(md) {
+    padding: 12rem 0 10rem;
+  }
+  @include c.mq() {
+    padding: 10rem 0 6rem;
+  }
+  h2 {
+    @include c.mq() {
+      margin-bottom: .5rem;
+    }
+  }
+  p {
+    text-align: center;
+    font-family: v.$sub-font;
+    font-weight: 500;
+    @include c.mq() {
+      font-family: 1.3rem;
+    }
+  }
+}
+
+.btn-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/0.21;
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/p-about_btnbg01.png) no-repeat center/contain;
+  @include c.mq() {
+    aspect-ratio:  1/0.4;
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/p-about_btnbg01_sp.png) no-repeat center/contain;
+  }
+}
+
+/*************************************************
+  おっぱ乳業について
+*************************************************/
+.p_about {
+  &.about-under-mv {
+    position: relative;
+    width: 100%;
+    .img-box {
+      width: 100%;
+      aspect-ratio: 1/.31;
+      img {
+        object-position: top;
+      }
+    }
+    .under_mv-ttl {
+      position: absolute;
+      top: v.pxtovw( 150);
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      h2 {
+        color: #fff;
+      }
+      p {
+        width: 63.4rem;
+        font-family: v.$sub-font;
+        font-weight: 500;
+        color: #fff;
+      }
+    }
+  }
+  .wrap01 {
+    position: relative;
+    margin-top: v.pxtovw(-100);
+    padding: v.pxtovw(194) 0 v.pxtovw(630);
+    background: 
+    url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/p-about_bg01.svg) no-repeat top/contain,
+    url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/p-about_bg02.png) no-repeat bottom/contain;
+    z-index: 2;
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+    p {
+      width: 63.4rem;
+      line-height: 2;
+      font-weight: 500;
+      margin: 0 auto;
+    }
+    .photo01 {
+      width: v.pxtovw(440);
+      position: absolute;
+      top: v.pxtovw(194);
+      left: v.pxtovw(-95);
+    }
+    .photo02 {
+      width: v.pxtovw(475);
+      position: absolute;
+      top: v.pxtovw(366);
+      right: v.pxtovw(-98);
+    }
+    .ushi01 {
+      width: v.pxtovw(180);
+      position: absolute;
+      top: v.pxtovw(-66);
+      left: v.pxtovw(220);
+    }
+    .ushi02 {
+      width: v.pxtovw(180);
+      position: absolute;
+      top: v.pxtovw(66);
+      right: v.pxtovw(192);
+    }
+  }
+  .wrap02 {
+    position: relative;
+    margin-top: v.pxtovw(-75);
+    padding-top: v.pxtovw(75);
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave01.svg) no-repeat top/contain;
+    z-index: 3;
+    .inner-wrap {
+      background-color: v.$bg-color;
+    }
+    .inner {
+      padding: 9.5rem 0 10rem;
+    }
+    .ttl {
+      margin-bottom: 7.2rem;
+      text-align: center;
+      p {
+        width: auto;
+        display: inline-block;
+        font-size: 2.8rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #fff;
+        padding: .5rem 1.5rem;
+        background-color: #6BAEE1;
+        box-shadow: v.$shadow02;
+        border-radius: 1.3rem;
+        margin-bottom: 1.2rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .box {
+      justify-content: space-between;
+      .left {
+        position: relative;
+        .img-box {
+          width: 60.3rem;
+        }
+        .ushi03 {
+          position: absolute;
+          top: -2.8rem;
+          left: 3.4rem;
+          transform: rotate(-30deg);
+        }
+        .ushi04 {
+          position: absolute;
+          bottom: -1.2rem;
+          right: 12.8rem;
+          transform: rotate(20deg);
+        }
+      }
+      .right {
+        width: 58.2rem;
+        padding-top: 8.5rem;
+        h2 {
+          margin-bottom: 2.4rem;
+          text-align: left;
+        }
+        p {
+          font-weight: 500;
+        }
+      }
+      &.second {
+        margin-top: -8rem;
+        flex-direction: row-reverse;
+        margin-bottom: 13.4rem;
+        .left {
+          .img-box {
+            width: 62rem;
+          }
+        }
+        .right {
+          padding-top: 21rem;
+        }
+      }
+    }
+  }
+  .wrap03 {
+    .swiper-wrapper {
+      transition-timing-function: linear;
+    }
+  }
+  .wrap04 {
+    position: relative;
+    // margin-top: -9rem;
+    margin-top: v.pxtovw(-90);
+    padding-top: 8.5rem;
+    padding-top: v.pxtovw(85);
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave04.svg) no-repeat top/contain;
+    z-index: 2;
+    .inner-wrap {
+      background-color: v.$bg-color02;
+    }
+    .inner {
+      padding: 6rem 0 23rem;
+      margin-top: -1px;
+    }
+    .sub-ttl {
+      margin-bottom: 7.8rem;
+    }
+    .block {
+      position: relative;
+      background-color: #fff;
+      border-radius: 2rem;
+      box-shadow: v.$shadow02;
+      padding: 1.5rem 0 1.5rem 4rem;
+      gap: 4rem;
+      margin-bottom: 4.8rem;
+      &::before,&::after {
+        content: "YOGURT";
+        font-family: v.$sub-font;
+        font-size: 1.2rem;
+        color: #d6d6d6;
+        position: absolute;
+        top: 42%;
+      }
+      &::before {
+        writing-mode: vertical-lr;
+        left: 1.4rem;
+        transform: scale(-1,-1);
+      }
+      &::after {
+        writing-mode: vertical-lr;
+        right: 1.4rem;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+        &::before,&::after {
+          content: "GELATO";
+        }
+      }
+      .left {
+        .img-box {
+          width: 45.7rem;
+          aspect-ratio: 1/.53;
+          border-radius: 1rem;
+          overflow: hidden;
+        }
+      }
+      .right {
+        p {
+          padding-top: 4.9rem;
+          font-size: 2.8rem;
+          font-weight: 600;
+          color: v.$sub-color;
+          margin-bottom: 2rem;
+        }
+        .flex {
+          gap: 3.8rem;
+        }
+      }
+      .badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.4;
+        position: absolute;
+        top: -2rem;
+        left: 0;
+        width: 10.5rem;
+        aspect-ratio: 1/1;
+        background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/badge01.svg) no-repeat center/contain;
+      }
+    }
+  }
+}
+
+
+/*************************************************
+  商品一覧
+*************************************************/
+.p_item-list {
+  .content {
+    background-color: v.$bg-color;
+    padding-bottom: 17.8rem;
+    .inner {
+      padding-top: 4rem;
+      border-top: 4px dotted v.$sub-color;
+    }
+    .item-list {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 4rem;
+      row-gap: 8rem;
+    }
+    .sort-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4rem;
+      @include c.mq() {
+        display: block;
+      }
+      p {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      .p-order-content {
+        ul {
+          display: flex;
+          @include c.mq() {
+            justify-content: space-between;
+          }
+          li,a {
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 500;
+          }
+          li {
+            a {
+              padding: .4rem 1rem;
+              transition: all .5s;
+              @include c.mq() {
+                padding: 0 .4rem 0 0;
+                font-size: 1.2rem;
+              }
+            }
+            .order-active {
+              background-color: v.$sub-color;
+              color: #fff;
+              border-radius: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*************************************************
+  商品詳細
+*************************************************/
+.p_item {
+  padding: 18rem 0 17rem;
+  background-color: v.$bg-color02;
+  @include c.mq() {
+    padding: 12rem 0 14rem;
+  }
+  .inner {
+    @include c.mq() {
+      max-width: 54rem;
+    }
+  }
+  .item-content {
+    display: flex;
+    gap: 3.3rem;
+    margin-bottom: 10rem;
+    @include c.mq() {
+      flex-direction: column;
+      margin-bottom: 6rem;
+    }
+  }
+  .img-content {
+    width: 60rem;
+    flex-shrink: 0;
+    @include c.mq(md) {
+      width: 40rem;
+    }
+    @include c.mq(){
+      width: 100%;
+      flex-basis: 100%;
+      margin-right: initial;
+    }
+  }
+  .img-wrapper {
+    .swiper-item {
+      overflow: hidden;
+    }
+    .swiper-slide .img-wrap {
+      aspect-ratio: 1/1;
+      border-radius: 2rem;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+      }
+    }
+  }
+  .thumb-list {
+    display: flex;
+    margin-top: 2.1rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    @include c.mq() {
+      gap: 1rem;
+    }
+    .thumb-item {
+      width: calc((100% / 5) - (8rem / 5));
+      aspect-ratio: 1/1;
+      border-radius: 1rem;
+      overflow: hidden;
+      @include c.mq() {
+        width: calc((100% / 4) - (3rem / 4));
+      }
+    }
+    .thumb-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+      }
+    }
+  }
+  // 右側のコンテンツ
+  .detail-content {
+    width: 100%;
+    @include c.mq(){
+      width: 100%;
+      flex-basis: 100%;
+    }
+    .cate {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .name {
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      @include c.mq() {
+        font-size: 2rem;
+      }
+    }
+    .price {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      margin-bottom: 3rem;
+      @include c.mq() {
+        font-size: 1.8rem;
+      }
+      span {
+        font-size: 1.8rem;
+        @include c.mq() {
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .txt {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.3rem;
+      @include c.mq() {
+        font-size: 1.4rem;
+      }
+    }
+    .item-infomation {
+      margin-bottom: 3rem;
+      tr {
+        border-bottom: 4px dotted v.$sub-color;
+        @include c.mq() {
+          border-bottom: none;
+        }
+      }
+      th,td {
+        padding: 1.7rem 0;
+      }
+      th {
+        width: 15%;
+        font-size: 1.5rem;
+        font-weight: 500;
+        @include c.mq() {
+          display: block;
+          width: 100%;
+          padding-bottom: 0;
+        }
+      }
+      td {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        @include c.mq() {
+          display: block;
+          width: 100%;
+          font-size: 1.4rem;
+          padding-top: .5rem;
+          border-bottom: 3px dotted v.$sub-color;
+        }        
+      }
+    }
+    .item-count {
+      form {
+        display: block;
+      }
+      p {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1.3rem;
+        @include c.mq() {
+          margin-bottom: 1rem;
+        }
+      }
+      .product-quantity {
+        width: 18.5rem;
+        height: 6rem;
+        display: flex;
+        background: #fff;
+        border: 1px solid rgba($color: #1c0702, $alpha: .25);
+        border-radius: .6rem;
+        text-align: center;
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+        button {
+          width: 6rem;
+        }
+        input {
+          width: initial;
+          padding: initial;
+          border-radius: initial;
+          width: 6.5rem;
+        }
+      }
+    }
+    // input numberの非表示
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    .cart-btn {
+      position: relative;
+      width:  37.8rem;
+      height: 6.3rem;
+      display: grid;
+      place-content: center;
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #3b3b3b;
+      background-color: #F8E04C;
+      outline: 3px dotted #fff;
+      outline-offset: -.8rem;
+      border-radius: 4rem;
+      margin-bottom: 1rem;
+      @include c.mq() {
+        width: 100%;
+        max-width: 37.8rem;
+      }
+      cursor: pointer;
+      transition: all 0.3s;
+      &::before {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 25%;
+        content: "";
+        width: 2.2rem;
+        aspect-ratio: 1/1;
+        background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/icon-cart02.svg) no-repeat center/contain;
+        @include c.mq() {
+          left: 20%;
+        }
+      }
+    }
+    .item-contact {
+      display: inline-block;;
+      text-decoration: underline;
+      font-size: 1.4rem;
+    }
+  }
+}
+.note-area {
+  padding: 4.8rem 10.7rem 4.3rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  outline: 4px dotted v.$sub-color;
+  outline-offset: -1.5rem;
+  box-shadow: v.$shadow02;
+  @include c.mq() {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    padding: v.pxtovw_sp(40) v.pxtovw_sp(20);
+    outline: 2px dotted v.$sub-color;
+    outline-offset: -1rem;
+  }
+  .note-ttl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: v.$sub-color;
+    text-align: center;
+    margin-bottom: 3.2rem;
+    @include c.mq() {
+      font-size: 2rem;
+      line-height: 1.4;
+      gap: 2rem;
+    }
+    span {
+      img {
+        filter: drop-shadow(v.$shadow01);
+        @include c.mq() {
+          max-width: 4rem;
+        }
+      }
+    }
+  }
+  .box {
+    margin-bottom: 3rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    .head-ttl {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      border-radius: 3.6rem;
+      background-color: v.$sub-color;
+      box-shadow: v.$shadow01;
+      outline: 3px dotted #fff;
+      outline-offset: -1rem;
+      margin-bottom: .8rem;
+      @include c.mq(md) {
+        font-size: 1.6rem;
+        padding: 1.5rem 1rem;
+        border-radius: 2rem;
+        outline: 2px dotted #fff;
+        outline-offset: -.5rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      @include c.mq() {
+        font-size: 1.4rem;
+        text-align: left;
+      }
+    }
+  }
+}
+
+/*************************************************
+  よくあるご質問
+*************************************************/
+.p_faq {
+  .inner-wraper {
+    padding: 13.4rem 0 18rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 4rem 0 10rem;
+    }
+  }
+  .anker-link {
+    width: 93rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 0 auto 10rem;
+    @include c.mq(md) {
+      width: 100%;
+    }
+    @include c.mq() {
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 5rem;
+    }
+  }
+  .block {
+    background-color: #fff;
+    border-radius: 2rem;
+    box-shadow: v.$shadow02;
+    outline: 3px dotted v.$sub-color;
+    outline-offset: -1.5rem;
+    padding: 8.3rem 7rem;
+    @include c.mq() {
+      outline: 2px dotted v.$sub-color;
+      outline-offset: -1rem;
+      padding: 4rem 3rem;
+    }
+    .anker-point {
+      margin-top: -10rem;
+      padding-top: 10rem;
+      margin-bottom: 10rem;
+      @include c.mq() {
+        margin-bottom: 8rem;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    h2 {
+      padding-bottom: 3rem;
+      border-bottom: 3px dotted v.$sub-color;
+    }
+    .qa {
+      position: relative;
+      padding: 2rem 0;
+      letter-spacing: 3px;
+      border-bottom: 3px dotted v.$sub-color;
+      @include c.mq() {
+        border-bottom: 2px dotted v.$sub-color;
+      }
+      &::before {
+        position: absolute;
+        top: 3.85rem;
+        right: 0;
+        content: "";
+        width: 1.2rem;
+        height: 1px;
+        background-color: #000;
+        @include c.mq() {
+          top: 3rem;
+        }
+      }
+      &::after {
+        position: absolute;
+        top: 3.3rem;
+        right: 5.5px;
+        content: "";
+        width: 1px;
+        height: 1.2rem;
+        background-color: #000;
+        transition: all .1s;
+        @include c.mq() {
+          top: 2.4rem;
+        }
+      }
+    }
+    .open {
+      &::after {
+        width: 0;
+      }
+    }
+    dt {
+      font-size: 1.6rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      @include c.mq() {
+        width: 93%;
+        align-items: flex-start;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+      img {
+        @include c.mq() {
+          width: 3rem;
+        }
+      }
+    }
+    dd {
+      padding-top: 1rem;
+      p {
+        font-size: 1.6rem;
+        padding-left: 5.7rem;
+        @include c.mq() {
+          font-size: 1.4rem;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+
+/*************************************************
+  会社概要
+*************************************************/
+.p_company {
+  .inner-wraper {
+    padding: 13.4rem 0 18rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 4rem 0 10rem;
+    }
+  }
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 3rem 0;
+    background-color: #fff;
+    border-radius: 2rem;
+    padding: 4.5rem 9.6rem 6.3rem;
+    margin-bottom: 5.2rem;
+    @include c.mq() {
+      border-spacing: 2rem 0;
+      padding: 1.5rem 0 4rem;
+    }
+    tr {
+      th {
+        width: 15%;
+        font-size: 1.6rem;
+        padding: 2rem 0;
+        border-bottom: 3px dotted v.$sub-color;
+        @include c.mq() {
+          display: block;
+          width: 100%;
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+      }
+      td {
+        font-size: 1.6rem;
+        padding: 2rem 0 2rem .8rem;
+        border-bottom: 3px dotted v.$main-txt;
+        @include c.mq() {
+          display: block;
+          width: 100%;
+          padding: 1rem 0 2rem 0;
+        }
+      }
+    }
+  }
+  .ttl {
+    text-align: center;
+    margin-bottom: 3.2rem;
+    @include c.mq() {
+      margin-bottom: 2rem;
+    }
+    p {
+      width: auto;
+      display: inline-block;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+      color: #fff;
+      padding: .5rem 1.5rem;
+      background-color: #6BAEE1;
+      box-shadow: v.$shadow02;
+      border-radius: 1.3rem;
+      margin-bottom: 1.2rem;
+      @include c.mq() {
+        font-size: 2rem;
+        box-shadow: v.$shadow02_sp;
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .map {
+    width: 98%;
+    aspect-ratio: 1/.22;
+    margin: 0 auto 5.3rem;
+    @include c.mq() {
+      aspect-ratio: 3/2;
+    }
+  }
+}
+
+
+/*************************************************
+  お問い合わせ
+*************************************************/
+.p_contact {
+  .inner-wraper {
+    padding: 13.4rem 0 18rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 4rem 0 10rem;
+    }
+  }
+  .message {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10rem;
+    @include c.mq() {
+      font-size: 1.4rem;
+      text-align: left;
+      margin-bottom: 6rem;
+    }
+    a {
+      color: #1c5497;
+      font-weight: 500;
+    }
+  }
+  .contact-tel {
+    border-top: 3px dotted v.$sub-color;
+    border-bottom: 3px dotted v.$sub-color;
+    padding: 3rem 0;
+    text-align: center;
+    margin-bottom: 10rem;
+    @include c.mq() {
+      padding: 2rem 0;
+      margin-bottom: 6rem;
+    }
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      @include c.mq() {
+        font-size: 1.6rem;
+        margin-bottom: .8rem;
+      }
+    }
+    a {
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #1C5497;
+      margin-bottom: 1rem;
+      @include c.mq() {
+        font-size: 2.5rem;
+      }
+    }
+    .business-hours {
+      font-size: 1.4rem;
+      letter-spacing: 0;
+      @include c.mq() {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  h3 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 2.8rem;
+    @include c.mq() {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+  }
+  .form_wrap {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 5rem 3.5rem 3rem;
+    margin-bottom: 10rem;
+    @include c.mq() {
+      padding: 4rem 2rem;
+      margin-bottom: 2rem;
+    }
+    form {
+      table {
+        width: 100%;
+        table-layout: fixed;
+        tr {
+          &:last-of-type {
+            th {
+              vertical-align: baseline;
+              padding-top: 1rem;
+            }
+            td {
+              padding-bottom: 4rem;
+              @include c.mq() {
+                padding-bottom: 2rem;
+              }
+            }
+          }
+          th {
+            width: 16%;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            vertical-align: middle;
+            padding-bottom: 17px;
+            color: #1a1311;
+            @include c.mq() {
+              display: block;
+              width: 100%;
+              padding-bottom: 10px;
+            }
+          }
+          td {
+            width: 84%;
+            padding-bottom: 17px;
+            @include c.mq() {
+              display: block;
+              width: 100%;
+              padding-bottom: 20px;
+            }
+            input,textarea {
+              width: 100%;
+              background-color: #F5FCFE;
+              padding: 15px 25px;
+              font-size: 1.4rem;
+              letter-spacing: 1px;
+              @include c.mq() {
+                padding: 1.5rem;
+              }
+            }
+            textarea {
+              @include c.mq() {
+                height: 20rem;
+              }
+            }
+          }
+        }
+      }
+      p {
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 5rem;
+        @include c.mq() {
+          text-align: left;
+          margin-bottom: 3rem;
+        }
+        a {
+          text-decoration: underline;
+        }
+      }
+      .btn-area {
+        .btn02 {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+
+/*************************************************
+  初めてご利用の方
+*************************************************/
+.p_guide {
+  &.under-mv {
+    position: relative;
+    .ushi {
+      position: absolute;
+      bottom: 0;
+      @include c.mq() {
+        width: v.pxtovw_sp(60);
+        max-width: 8rem;
+      }
+      img {
+        @include c.mq() {
+          width: 100%;
+        }
+      }
+      &:first-of-type {
+        left: v.pxtovw(349);
+        @include c.mq() {
+          left: v.pxtovw_sp(20);
+          bottom: v.pxtovw_sp(10);
+        }
+      }
+      &:nth-of-type(2) {
+        right: v.pxtovw(309);
+        @include c.mq() {
+          right: v.pxtovw_sp(20);
+          bottom: v.pxtovw_sp(10);
+        }
+      }
+    }
+  }
+  .wrap01 {
+    padding: 13.4rem 0 11rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 6rem 0 8rem;
+    }
+  }
+  .wrap02 {
+    padding: 15rem 0 23rem;
+    background: 
+    url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave02.svg) no-repeat top/contain,
+    url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave01.svg) no-repeat bottom/contain;
+    background-color: v.$bg-color02;
+    @include c.mq() {
+      padding: 10rem 0;
+    }
+    h2 {
+      margin-bottom: 7rem;
+      @include c.mq() {
+        margin-bottom: 4rem;
+      }
+    }
+    .box {
+      margin-bottom: 10rem;
+      @include c.mq() {
+        max-width: 50rem;
+        margin: 0 auto;
+        margin-bottom: 6rem;
+      }
+      h3 {
+        font-size: 2.8rem;
+        color: v.$sub-color;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 2.2rem;
+        border-bottom: 3px dotted v.$sub-color;
+        padding-bottom: 1.5rem;
+        margin-bottom: 3.3rem;
+        @include c.mq() {
+          font-size: 1.8rem;
+          line-height: 1.4;
+        }
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 6.1rem;
+          aspect-ratio: 1/1;
+          background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/badge01.svg) no-repeat center/contain;
+          filter: drop-shadow(v.$shadow01);
+          @include c.mq() {
+            width: 4rem;
+          }
+          p {
+            font-size: 2.6rem;
+            @include c.mq() {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+      .flex {
+        gap: 4.4rem;
+        @include c.mq() {
+          gap: 2.5rem;
+          flex-direction: column;
+        }
+        .left {
+          .img-box {
+            width: 53.7rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            @include c.mq(md) {
+              width: 40rem;
+            }
+            @include c.mq() {
+              width: 100%;
+            }
+          }
+        }
+        .right {
+          p {
+            font-weight: 500;
+            line-height: 2;
+            margin-bottom: 2rem;
+            span {
+              color: #C70000;
+            }
+          }
+        }
+      }
+    }
+  }
+  .wrap03 {
+    padding: 6rem 0 18rem;
+    background-color: v.$bg-color;
+    h2 {
+      margin-bottom: 3rem;
+    }
+    .box {
+      border-radius: 2rem;
+      background-color: #fff;
+      outline: 3px dotted v.$sub-color;
+      outline-offset: -1.5rem;
+      padding: 5rem 7.3rem 6.8rem;
+      box-shadow: v.$shadow02;
+      @include c.mq() {
+        outline: 2px dotted v.$sub-color;
+        outline-offset: -1rem;
+        padding: 4rem 3rem 6rem;
+        padding: v.pxtovw_sp(40) v.pxtovw_sp(30) v.pxtovw_sp(50);
+        box-shadow: v.$shadow02_sp;
+      }
+      h3 {
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: v.$sub-color;
+        margin-bottom: 2rem;
+        @include c.mq() {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+      }
+      p {
+        font-weight: 500;
+        line-height: 2;
+        margin-bottom: 6.2rem;
+        @include c.mq() {
+          margin-bottom: 4rem;
+        }
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+        span {
+          color: #C70000;
+        }
+      }
+    }
+  }
+}
+
+
+/*************************************************
+  プライバシーポリシー
+*************************************************/
+.p_policy {
+  .inner-wraper {
+    padding: 13.4rem 0 18rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 4rem 0 10rem;
+    }
+  }
+  h3,p,li {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
+  p,li {
+    font-size: 1.3rem;
+  }
+  .first_txt {
+    font-weight: 500;
+    margin-bottom: 7rem;
+    @include c.mq() {
+      margin-bottom: 4rem;
+    }
+  }
+  .policy_wrap {
+    .medium_ttl {
+      font-weight: 500;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid #030304;
+      margin-bottom: 2.5rem;
+      @include c.mq(md) {
+        padding-bottom: 1rem;
+      }
+      @include c.mq() {
+        padding-bottom: 1rem;
+      }
+    }
+    .txt_box {
+      margin-bottom: 7rem;
+      @include c.mq(md) {
+        margin-bottom: 4rem;
+      }
+      .dots_list {
+        list-style-type: disc;
+        padding-left: 2rem;
+        margin-top: .5rem;
+      }
+    }
+  }
+}
+
+/*************************************************
+  特商法
+*************************************************/
+.p_terms {
+  .inner-wraper {
+    padding: 13.4rem 0 18rem;
+    background-color: v.$bg-color;
+    @include c.mq() {
+      padding: 4rem 0 10rem;
+    }
+  }
+  table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 3rem 0;
+    border-radius: 2rem;
+    margin-bottom: 5.2rem;
+    @include c.mq() {
+      border-spacing: 2rem 0;
+    }
+    tr {
+      th {
+        width: 15%;
+        font-size: 1.6rem;
+        padding: 2rem 0;
+        border-bottom: 3px dotted v.$sub-color;
+        @include c.mq() {
+          display: block;
+          width: 100%;
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+      }
+      td {
+        font-size: 1.6rem;
+        line-height: 2;
+        padding: 2rem 0 2rem .8rem;
+        border-bottom: 3px dotted v.$main-txt;
+        @include c.mq() {
+          font-size: 1.4rem;
+          display: block;
+          width: 100%;
+          padding: 1rem 0 2rem 0;
+        }
+        span {
+          color: #f00;
+        }
+      }
+    }
+  }
+}

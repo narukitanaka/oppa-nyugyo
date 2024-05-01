@@ -1,0 +1,226 @@
+@use "variable"as v;
+/*************************************************
+common-style
+*************************************************/
+@mixin base_width{
+  margin: 0 auto;
+  width: 1240px;
+}
+// @extendでスタイルの継承
+// @mixinでステイルの定義
+// @includeでmixinの呼び出し
+
+// ブレイクポイント
+// PC基準でコーディングする場合
+$breakpoints: (
+  "sm": "screen and (max-width: 768px)", //スマホ
+  "md": "screen and (max-width: 1100px)", //タブレット
+) !default;
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints , $breakpoint)} {
+    @content;
+  }
+}
+
+// スマホ基準でコーディングする場合
+// $breakpoints: (
+//   "md": "screen and (min-width: 600px)", //タブレット
+//   "lg": "screen and (min-width: 1025px)", //パソコン
+// ) !default;
+// @mixin mq($breakpoint: lg) {
+//   @media #{map-get($breakpoints , $breakpoint)} {
+//     @content;
+//   }
+// }
+
+*{
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: "Zen Maru Gothic","ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+.img-box {
+  img {
+    width: 100%;
+  }
+}
+
+.obj-fit {
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.h-scale {
+  overflow: hidden;
+  img {
+    transition: all .3s;
+  }
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.flex { 
+  display: flex;
+}
+
+.inner {
+  position: relative;
+  width: 1240px;
+  margin: 0 auto;
+  @include mq(md) {
+    width: 80%;
+  }
+  @include mq() {
+    width: 90%;
+  }
+}
+
+div,
+p,
+li,
+a {
+  color: v.$main-txt;
+  font-size: 1.7rem;
+  line-height: 1.7;
+  letter-spacing: 1px;
+  @include mq() {
+    font-size: 1.4rem;
+  }
+}
+
+h2 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: v.$sub-color;
+  text-align: center;
+  margin-bottom: 1rem;
+  @include mq() {
+    font-size: 2.2rem;
+    margin-bottom: .5rem;
+  }
+}
+.sub-ttl {
+  font-family: v.$sub-font;
+  font-size: 1.2rem;
+  text-align: center;
+  @include mq() {
+    font-weight: 700;
+  }
+}
+
+
+.clearfix:after {
+  content:"";
+  display:block;
+  clear:both;
+}
+
+
+// /iOSでのデフォルトスタイルをリセット /
+input[type="submit"],
+input[type="button"] {
+border-radius: 0;
+-webkit-box-sizing: content-box;
+-webkit-appearance: button;
+appearance: button;
+border: none;
+box-sizing: border-box;
+&::-webkit-search-decoration {
+display: none;
+}
+&:focus {
+outline-offset: -2px;
+}
+}
+
+.wrap-hidden {
+  overflow: hidden;
+}
+
+.btn01,.btn02 {
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  padding-top: 4.5rem;
+  width: 29.6rem;
+  aspect-ratio: 1/0.31;
+  font-weight: 500;
+  letter-spacing: 0;
+  transition: all .3s;
+  @include mq() {
+    padding-top: 3.7rem;
+    width: 24.6rem;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 5.7rem;
+    left: 3rem;
+    border-style: solid;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 0;
+    @include mq() {
+      top: 4.5rem;
+    }
+  }
+}
+.btn01 {
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/btn01.svg) no-repeat center/contain;
+  &::before {
+    border-left: 9px solid v.$sub-color;
+  }
+}
+.btn02 {
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/btn02.svg) no-repeat center/contain;
+  color: #fff;
+  &::before {
+    border-left: 9px solid #fff;
+  }
+}
+
+.item-card {
+  width: 28rem;
+  .img-box {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: v.$shadow01;
+    margin-bottom: 1rem;
+  }
+  .name {
+    font-size: 1.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: .2rem;
+    @include mq() {
+      font-size: 1.6rem;
+    }
+  }
+  .price {
+    font-size: 1.9rem;
+    font-weight: 600;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}

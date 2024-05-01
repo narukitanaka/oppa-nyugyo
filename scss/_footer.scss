@@ -1,0 +1,341 @@
+@use "variable"as v;
+@use "common"as c;
+/*************************************************
+footer
+*************************************************/
+.cta {
+  position: relative;
+  margin-top: -8rem;
+  margin-top: v.pxtovw(-80);
+  padding-top: v.pxtovw(80);
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave03.svg) no-repeat top/contain;
+  z-index: 10;
+  @include c.mq() {
+    margin-top: v.pxtovw_sp(-60);
+    padding-top: v.pxtovw_sp(60);
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/wave03_sp.svg) no-repeat top/contain;
+  }
+  .top {
+    padding: 4rem 0 10.5rem;
+    background-color: #E4FDD1;
+    @include c.mq() {
+      padding: 2rem 0 12.5rem;
+    }
+    .inner {
+      display: flex;
+      gap: 5.5rem;
+      @include c.mq() {
+        flex-direction: column;
+        gap: 8.5rem;
+      }
+      .box {
+        width: calc((100% / 2) - (5.5rem / 2));
+        aspect-ratio: 1/.5;
+        @include c.mq() {
+          width: 100%;
+          max-width: 50rem;
+          margin: 0 auto;
+        }
+        a {
+          position: relative;
+          background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/btn03.svg) no-repeat center/contain;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding-top: 15rem;
+          font-size: 2.5rem;
+          font-weight: 700;
+          text-align: center;
+          line-height: 1.2;
+          transition: all .3s;
+          @include c.mq(md) {
+            padding-top: 9.5rem;
+          }
+          @include c.mq() {
+            padding-top: min(v.pxtovw_sp(82), 13rem );
+            font-size: 2rem;
+            background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/btn03_sp.svg) no-repeat center/cover;
+          }
+          &:hover {
+            transform: scale(1.05);
+          }
+          span {
+            font-family: v.$sub-font;
+            font-size: 1.8rem;
+            color: v.$sub-color;
+            @include c.mq() {
+              font-size: 1.6rem;
+            }
+          }
+          .ushi {
+            width: 16.1rem;
+            position: absolute;
+            bottom: -2.3rem;
+            right: -3.4rem;
+            @include c.mq(md) {
+              width: 14rem;
+            }
+            @include c.mq() {
+              width: 34%;
+              bottom: -42%;
+              right: 2%;
+            }
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    position: relative;
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/footer-cta_bg.jpg) no-repeat center/cover;
+    display: flex;
+    @include c.mq() {
+      background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/footer-cta_bg_sp.jpg) no-repeat center/cover;
+      flex-direction: column;
+    }
+    &::before {
+      content: "";
+      width: 1px;
+      height: 15.5rem;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      @include c.mq() {
+        width: 90%;
+        height: 1px;
+      }
+    }
+    .left,.right {
+      width: 50%;
+      height: 24.7rem;
+      background-color: rgba($color: #000000, $alpha: .35);
+      transition: all .3s;
+      @include c.mq() {
+        width: 100%;
+        height: v.pxtovw_sp(123);
+      }
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        p {
+          position: relative;
+          font-size: 2.5rem;
+          font-weight: 700;
+          letter-spacing: 2px;
+          line-height: 1;
+          text-align: center;
+          color: #fff;
+          &::before {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 1rem;
+            left: -3rem;
+            border-style: solid;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            border-left: 9px solid #fff;
+            border-right: 0;
+          }
+          span {
+            font-family: v.$sub-font;
+            font-size: 1.8rem;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+    .left {
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: .1);
+        p {
+          text-shadow: 2px 2px 4px rgba($color: #000000, $alpha: .3),
+          -2px -2px 4px rgba($color: #000000, $alpha: .3);
+        }
+      }
+    }
+    .right {
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: .1);
+        p {
+          text-shadow: 2px 2px 4px rgba($color: #000000, $alpha: .3),
+          -2px -2px 4px rgba($color: #000000, $alpha: .3);
+        }
+      }
+    }
+  }
+}
+
+footer {
+  position: relative;
+  padding: v.pxtovw(40) 0 v.pxtovw(220);
+  background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/footer-bottom_bg.svg) no-repeat bottom/contain;
+  background-color: v.$bg-color02;
+  @include c.mq() {
+    padding: v.pxtovw_sp(30) 0 v.pxtovw_sp(223);
+    background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/footer-bottom_bg_sp.svg) no-repeat bottom/contain;
+  }
+  .inner {
+    display: flex;
+    gap: 9rem;
+    @include c.mq(md) {
+      width: 90%;
+      gap: 4rem;
+    }
+    @include c.mq() {
+      display: block;
+    }
+  }
+  nav {
+    margin-bottom: 2.5rem;
+    @include c.mq() {
+      margin-bottom: 2rem;
+    }
+    ul {
+      @include c.mq() {
+        padding-left: v.pxtovw_sp(20);
+      }
+      li {
+        font-weight: 500;
+        letter-spacing: 0;
+        margin-bottom: 1rem;
+        @include c.mq() {
+          margin-bottom: 2rem;
+        }
+        a {
+          @include c.mq(md) {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      .tri {
+        position: relative;
+        &::before {
+          content: "";
+          width: 0;
+          height: 0;
+          position: absolute;
+          top: 1rem;
+          left: -2rem;
+          border-style: solid;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          border-left: 9px solid v.$sub-color;
+          border-right: 0;
+          @include c.mq() {
+            top: .7rem;
+          }
+        }
+      }
+    }
+  }
+  .column {
+    &.col01 {
+      .logo {
+        width: 23rem;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-right: 6rem;
+        margin-bottom: 2rem;
+        @include c.mq(md) {
+          margin-right: 2rem;
+        }
+        @include c.mq() {
+          margin: 0 auto 3.5rem;
+        }
+      }
+      p {
+        font-size: 1.3rem;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+    }
+    &.col03 {
+      nav {
+        ul {
+          li {
+            &:first-of-type {
+              @include c.mq() {
+                margin-bottom: .5rem;
+              }
+            }
+            &:nth-of-type(2),&:last-of-type {
+              @include c.mq() {
+                display: inline-block;
+                margin-bottom: 0;
+              }              
+              a {
+                @include c.mq() {
+                  font-size: 1.3rem;
+                  letter-spacing: 0;
+                }
+              }
+            }
+            &:nth-of-type(2) {
+              @include c.mq() {
+                margin-right: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.col04 {
+      li {
+        margin-bottom: 1.5rem;
+      }
+      .smal-link {
+        margin-top: 5rem;
+        @include c.mq() {
+          margin-top: 3rem;
+          margin-bottom: 3rem;
+          display: flex;
+          gap: 2.2rem;
+        }
+        a {
+          font-size: 1.3rem;
+          font-weight: 500;
+          display: block;
+          margin-bottom: .6rem;
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+      }
+      p {
+        @include c.mq() {
+          font-size: 1.3rem;
+          font-weight: 500;
+          line-height: 1.5;
+          margin-bottom: v.pxtovw_sp(30);
+        }
+      }
+    }
+  }
+  .copy {
+    position: absolute;
+    bottom: 1.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    @include c.mq() {
+      width: 100%;
+      font-size: 1.1rem;
+      bottom: .5rem;
+    }
+  }
+}

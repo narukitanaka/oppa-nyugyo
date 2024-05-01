@@ -1,0 +1,127 @@
+@use "variable"as v;
+@use "common"as c;
+/*************************************************
+アニメーション
+*************************************************/
+.fadeIn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anime-ttl01 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  span { 
+    display: inline-block;
+    transform: translateY(150px);
+    transition: transfrom 0.5s;
+  }
+}
+
+.anime-bounce01 {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+// .anime-ttl02 {
+//   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+//   text-align: center;
+//   h2 {
+//     display: inline-block;
+//     transform: translateY(100px);
+//     transition: transfrom 0.5s;
+//   }
+// }
+
+// .anime-para {
+//   overflow: hidden;
+// }
+
+
+// タブ
+// .box01,.box02 {
+//   display: none;
+// }
+// .tab_panel-box.is-show {
+//   display: block;
+// }
+
+
+// テキストスライド
+// .txt-slider {
+//   // margin-bottom: 12rem;
+//   p {
+//     display: inline-block;
+//     // color: #fff;
+//     // opacity: .8;
+//   }
+//   .to-left,.to-right {
+//     white-space: nowrap;
+//     p {
+//       line-height: 1;
+//     }
+//   }
+//   .to-left {
+//     p {
+//       // font-size: v.pxtovw(100);
+//       // margin-bottom: 2rem;
+//       &:first-of-type {
+//         -webkit-animation: loop-left 60s -30s linear infinite;
+//         animation: loop-left 60s -30s linear infinite;
+//       }
+//       &:last-of-type {
+//         -webkit-animation: loop-left2 60s linear infinite;
+//         animation: loop-left2 60s linear infinite;
+//       }
+//     }
+//     @keyframes loop-left {
+//       0% {
+//         transform: translateX(100%);
+//       }
+//       to {
+//         transform: translateX(-100%);
+//       }
+//     }
+//     @keyframes loop-left2 {
+//       0% {
+//         transform: translateX(0);
+//       }
+//       to {
+//         transform: translateX(-200%);
+//       }
+//     }
+//   }
+//   .to-right {
+//     p {
+//       font-size: v.pxtovw(72);
+//       &:first-of-type {
+//         -webkit-animation: loop-right 40s -20s linear infinite;
+//         animation: loop-right 40s -20s linear infinite;
+//       }
+//       &:last-of-type {
+//         -webkit-animation: loop-right2 40s linear infinite;
+//         animation: loop-right2 40s linear infinite;
+//       }
+//     }
+//     @keyframes loop-right {
+//       0% {
+//         transform: translateX(-100%);
+//       }
+//       to {
+//         transform: translateX(100%);
+//       }
+//     }
+//     @keyframes loop-right2 {
+//       0% {
+//         transform: translateX(-200%);
+//       }
+//       to {
+//         transform: translateX(0);
+//       }
+//     }
+//   }
+// }
