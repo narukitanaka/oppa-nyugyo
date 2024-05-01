@@ -396,6 +396,7 @@
         </script>
       {% endif %}
 
+      {% comment %} 購入数量ボタン {% endcomment %}
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
           var quantityInput = document.getElementById('p-quantity');
@@ -410,6 +411,60 @@
           plusButton.addEventListener('click', function() {
             var currentVal = parseInt(quantityInput.value, 10);
             quantityInput.value = currentVal + 1;
+          });
+        });
+      </script>
+
+      {% comment %} 並び順ソート {% endcomment %}
+      <script>
+        var currentSortBy = "{{ collection.sort_by | default: collection.default_sort_by }}";
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var sortLinks = document.querySelectorAll('a[data-sort-by]');
+          sortLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              var sortBy = this.dataset.sortBy;
+              var newUrl = updateQueryString('sort_by', sortBy, window.location.href);
+              window.location.href = newUrl;
+            });
+          });
+        });
+        function updateQueryString(key, value, url) {
+          if (! url) 
+            url = window.location.href;
+          var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi");
+          if (re.test(url)) {
+            if (typeof value !== 'undefined' && value !== null) 
+              return url.replace(re, '$1' + key + "=" + value + '$2$3');
+            else {
+              var hash = url.split('#');
+              url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+              if (typeof hash[1] !== 'undefined' && hash[1] !== null) 
+                url += '#' + hash[1];
+              return url;
+            }
+          } else {
+            if (typeof value !== 'undefined' && value !== null) {
+              var separator = url.indexOf('?') !== -1
+                ? '&'
+                : '?';
+              var hash = url.split('#');
+              url = hash[0] + separator + key + '=' + value;
+              if (typeof hash[1] !== 'undefined' && hash[1] !== null) 
+                url += '#' + hash[1];
+              return url;
+            } else 
+              return url;
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          var sortLinks = document.querySelectorAll('a[data-sort-by]');
+          sortLinks.forEach(function(link) {
+            if (link.dataset.sortBy === currentSortBy) {
+              link.classList.add('order-active');
+            }
           });
         });
       </script>
