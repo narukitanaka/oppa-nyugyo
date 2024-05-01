@@ -1095,11 +1095,18 @@ top
 }
 .p-top_wrap02 ul .swiper-wrapper {
   display: flex;
-  justify-content: space-between;
+  gap: 4rem;
+}
+@media screen and (max-width: 768px) {
+  .p-top_wrap02 ul .swiper-wrapper {
+    row-gap: normal;
+    -moz-column-gap: normal;
+         column-gap: normal;
+  }
 }
 .p-top_wrap02 ul .item-card {
   position: relative;
-  width: 28rem;
+  width: calc(25% - 3rem);
 }
 @media screen and (max-width: 768px) {
   .p-top_wrap02 ul .item-card {
@@ -1131,7 +1138,7 @@ top
   content: "No.3";
   background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/ranking03.svg) no-repeat center/contain;
 }
-.p-top_wrap02 ul .item-card:last-of-type::before {
+.p-top_wrap02 ul .item-card:nth-of-type(4)::before {
   content: "No.4";
   background: url(https://cdn.shopify.com/s/files/1/0661/0393/5125/files/ranking04.svg) no-repeat center/contain;
 }

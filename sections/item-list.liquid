@@ -1,0 +1,80 @@
+<div class="under-mv p_item-list">
+  <h2>商品一覧</h2>
+  <p>LINE UP</p>
+</div>
+
+<div class="p_item-list">
+
+  <div class="content">
+    <div class="inner">
+
+      {% if cart.attributes.pagination != blank %}
+        {%- assign limit = cart.attributes.pagination %}
+      {% else %}
+        {% assign limit = 20 -%}
+      {% endif %}
+      {% paginate collection.products by limit %}
+
+        <div class="sort-area">
+          <p>全{{ paginate.items }}件</p>
+          <div class="p-order-content">
+            <ul>
+              <li>並び順：</li>
+              {% comment %} <li><a class="order-active" href="#">おすすめ順</a></li> {% endcomment %}
+              <li><a href="{{ product.url }}?sort_by=best-selling" data-sort-by="best-selling" >おすすめ順</a></li>
+              <li><a href="{{ product.url }}?sort_by=created-descending" data-sort-by="created-descending">新着順</a></li>
+              <li><a href="{{ product.url }}?sort_by=price-ascending" data-sort-by="price-ascending">価格が安い順</a></li>
+              <li><a href="{{ product.url }}?sort_by=price-descending" data-sort-by="price-descending">価格が高い順</a></li>
+            </ul>
+          </div>
+        </div><!-- /.sort-area-->
+
+        <ul class="item-list">
+
+          {% assign has_products = false %}
+          {% for product in collection.products %}
+            {% assign has_products = true %}
+
+            <li class="item-card">
+              <a href="{{ product.url }}">
+                <div class="img-box obj-fit"><img src="{{ product.featured_image.src | img_url: 'master' }}" alt=""></div>
+                <p class="name">{{ product.title }}</p>
+                <p class="price">{{ product.price | money }}<span>（税込）</span></p>
+              </a>
+            </li>
+
+          {% endfor %}
+
+        </ul>
+
+        {% unless has_products %}
+          <p class="unless-has">該当する商品がありません。</p>
+        {% endunless %}
+
+        <!-- ページネーション -->
+        {% if paginate.pages > 1 %}
+          {% render "pagination", paginate: paginate %}
+        {% endif %}
+
+      {% endpaginate %}
+
+    </div><!-- /.inner -->
+  </div><!-- /.inner -->
+
+</div><!-- /.p_item-list-->
+
+{% render 'under-common-block' %}
+
+
+
+
+{% schema %}
+  {
+    "name": "item-list",
+    "presets": [
+      {
+        "name": "item-list"
+      }
+    ]
+  }
+{% endschema %}

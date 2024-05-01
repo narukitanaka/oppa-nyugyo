@@ -78,13 +78,18 @@
     <p class="sub-ttl fadeIn">RANKING</p>
     <ul class="ranking-swiper">
       <div class="swiper-wrapper">
-        <li class="item-card swiper-slide fadeIn">
-          <a href="item.html">
-            <div class="img-box obj-fit"><img src="https://cdn.shopify.com/s/files/1/0661/0393/5125/files/dummy-item01.jpg" alt=""></div>
-            <p class="name">おきなわじぇらーと 12個セット</p>
-            <p class="price">¥0,000<span>（税込）</span></p>
-          </a>
-        </li>
+
+        {% assign collection = collections['ranking'] %}
+        {% for product in collection.products limit:4 %}
+          <li class="item-card swiper-slide fadeIn">
+            <a href="{{ product.url }}">
+              <div class="img-box obj-fit"><img src="{{ product.featured_image.src | img_url: 'master' }}" alt=""></div>
+              <p class="name">{{ product.title }}</p>
+              <p class="price">{{ product.price | money }}<span>（税込）</span></p>
+            </a>
+          </li>
+        {% endfor %}
+
       </div><!-- /.swiper-wrapper -->
       <div class="swiper-scrollbar"></div>
     </ul>
