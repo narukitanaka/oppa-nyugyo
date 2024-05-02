@@ -1,4 +1,8 @@
-<div class="cta">
+<div class="cta"
+{% if template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
+  style="margin-top: 10rem;"
+{% endif %}
+>
   <div class="top">
     <div class="inner">
       <div class="box fadeIn">

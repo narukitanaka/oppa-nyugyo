@@ -1683,12 +1683,22 @@ top
   商品詳細
 *************************************************/
 .p_item {
-  padding: 18rem 0 17rem;
   background-color: #F4FEFF;
 }
+.p_item.p_item-top {
+  padding: 18rem 0 8rem;
+}
 @media screen and (max-width: 768px) {
-  .p_item {
-    padding: 12rem 0 14rem;
+  .p_item.p_item-top {
+    padding: 12rem 0 5rem;
+  }
+}
+.p_item.p_item-bottom {
+  padding: 8rem 0 17rem;
+}
+@media screen and (max-width: 768px) {
+  .p_item.p_item-bottom {
+    padding: 5rem 0 14rem;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1699,12 +1709,10 @@ top
 .p_item .item-content {
   display: flex;
   gap: 3.3rem;
-  margin-bottom: 10rem;
 }
 @media screen and (max-width: 768px) {
   .p_item .item-content {
     flex-direction: column;
-    margin-bottom: 6rem;
   }
 }
 .p_item .img-content {
@@ -1828,6 +1836,8 @@ top
   }
 }
 .p_item .detail-content .item-infomation {
+  table-layout: fixed;
+  width: 100%;
   margin-bottom: 3rem;
 }
 .p_item .detail-content .item-infomation tr {
@@ -1946,6 +1956,32 @@ top
   display: inline-block;
   text-decoration: underline;
   font-size: 1.4rem;
+}
+
+.product-options p {
+  font-size: 1.8rem !important;
+}
+.product-options .p-option {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+.product-options .p-option:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+.product-options .p-option label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.product-options .p-option select {
+  max-width: 30rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
 }
 
 .note-area {
@@ -2765,6 +2801,51 @@ top
 }
 .p_terms table tr td span {
   color: #f00;
+}
+
+/*************************************************
+  カート
+*************************************************/
+.cart__checkout-button {
+  position: relative;
+  width: 37.8rem;
+  height: 6.3rem;
+  display: grid;
+  place-content: center;
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #3b3b3b;
+  background-color: #f8e04c;
+  outline: 3px dotted #fff;
+  outline-offset: -0.8rem;
+  border-radius: 4rem;
+  border: none;
+  cursor: pointer;
+}
+.cart__checkout-button::after {
+  box-shadow: none;
+}
+.cart__checkout-button:hover::after {
+  box-shadow: none !important;
+}
+
+/*************************************************
+  レビューアプリ
+*************************************************/
+#judgeme_product_reviews {
+  background-color: #f4feff;
+  padding-bottom: 5px;
+}
+#judgeme_product_reviews .jdgm-rev-widg {
+  max-width: 1240px;
+  padding: 24px 40px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.1607843137);
+  border-radius: 2rem;
+}
+#judgeme_product_reviews .jdgm-form .jdgm-form__reviewer-name-format-container {
+  display: none;
 }
 
 /**

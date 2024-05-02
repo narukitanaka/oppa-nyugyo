@@ -255,11 +255,11 @@
       {{ 'base.css' | asset_url | stylesheet_tag }}
       {% style %}
         main {
-          padding: 150px 0 100px;
+          padding: 150px 0 0;
         }
         @media screen and (max-width: 769px) {
           main {
-            padding: 60px 0 100px;
+            padding: 60px 0 0;
           }
         }
       {% endstyle %}
@@ -320,6 +320,9 @@
   
       <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
         {{ content_for_layout }}
+        {% if template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
+          {% render 'under-common-block' %}
+        {% endif %}
       </main>
   
       {% sections 'footer-group' %}
@@ -399,9 +402,9 @@
       {% comment %} 購入数量ボタン {% endcomment %}
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-          var quantityInput = document.getElementById('p-quantity');
-          var minusButton = document.getElementById('p-minus');
-          var plusButton = document.getElementById('p-plus');
+          var quantityInput = document.getElementById('quantity');
+          var minusButton = document.getElementById('minus');
+          var plusButton = document.getElementById('plus');
           minusButton.addEventListener('click', function() {
             var currentVal = parseInt(quantityInput.value, 10);
             if (currentVal > 1) {

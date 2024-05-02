@@ -1,0 +1,226 @@
+<div class="p_item p_item-top">
+
+  <div class="inner">
+
+    <div class="item-content">
+
+      <div class="img-content">
+        <div class="img-wrapper">
+          <div class="swiper-item">
+            <div class="swiper-wrapper">
+              {% for image in product.images %}
+                <div class="swiper-slide">
+                  <div class="img-wrap">
+                    <img src="{{ image.src | img_url: 'master' }}" alt="">
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div><!-- /.swiper-wrapper -->
+          </div><!-- /.swiper-item -->
+          <div class="thumb-list">
+            {% for image in product.images %}
+              <div class="thumb-item">
+                <a class="thumb-link" href="javascript:void(0);" onclick="thumbnail({{ forloop.index }})">
+                  <img src="{{ image.src | img_url: 'master' }}" alt="">
+                </a>
+              </div>
+            {%- endfor -%}
+          </div><!-- /.thumb-list -->
+        </div><!-- /.img-wrapper -->
+      </div><!-- /.img-content -->
+
+      <div class="detail-content">
+        <p class="cate">
+          カテゴリ：{% for collection in product.collections %}
+            {% assign excluded_collections = 'all,ranking' | split: ',' %}
+            {% unless excluded_collections contains collection.handle %}
+              {{ collection.title }}
+            {% endunless %}
+          {% endfor %}
+        </p>
+        <p class="name">{{ product.title }}</p>
+        {% comment %} <p class="price">◯○円<span>(税込)</span></p> {% endcomment %}
+        {% if product.variants.size > 1 %}
+          <!-- 通常価格 -->
+          <p id="NormalPrice" class="price" style="display: none;">{{ product.price | money_with_currency }}<span>（税込）</span></p>
+          <!-- 割引価格 -->
+          <p id="DiscountPrice" class="price" style="display: none; color: #f00;">割引価格：{{ product.price | money_with_currency }}<span>（税込）</span></p>
+        {% else %}
+          {% if product.compare_at_price_max and product.compare_at_price_max > product.price %}
+            <p class="price">{{ product.compare_at_price_max | money_with_currency }}<span>（税込）</span></p>
+            <p class="price" style="color: #f00;">割引価格：{{ product.price | money_with_currency }}<span>（税込）</span></p>
+          {% else %}
+            <p class="price">{{ product.price | money_with_currency }}<span>（税込）</span></p>
+          {% endif %}
+        {% endif %}
+        <div class="txt">
+          {{ product.content }}
+        </div>
+        <table class="item-infomation">
+          <tr>
+            {% if product.metafields.custom._capacity != blank %}
+              <th>内容量</th>
+              <td>{{ product.metafields.custom._capacity }}</td>
+            {% endif %}
+          </tr>
+          <tr>
+            {% if product.metafields.custom._best-before != blank %}
+              <th>賞味期限</th>
+              <td>{{ product.metafields.custom._best-before }}</td>
+            {% endif %}
+          </tr>
+          <tr>
+            {% if product.metafields.custom._preservation != blank %}
+              <th>保存方法</th>
+              <td>{{ product.metafields.custom._preservation }}</td>
+            {% endif %}
+          </tr>
+        </table>
+
+        <div class="item-count">
+
+          <form method="post" action="/cart/add" id="AddToCartForm">
+
+            {% if product.variants.size > 1 %}
+              <div class="product-options">
+                <p>ジェラートを選ぶ</p>
+                <input type="hidden" name="id" id="VariantId" value="" data-inventory-quantity="">
+                {% comment %} 商品オプション選択 {% endcomment %}
+                {% for option in product.options_with_values %}
+                  <div class="p-option">
+                    <label for="option-{{ option.position }}">{{ option.name }}</label>
+                    <select id="option-{{ option.position }}" class="product-option-select" name="options[{{ option.name }}]">
+                      <option disabled selected value>選択する</option>
+                      {% for value in option.values %}
+                        <option value="{{ value }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                {% endfor %}
+                {% comment %}ここまで 商品オプション選択 {% endcomment %}
+              </div>
+            {% else %}
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" data-inventory-quantity="{{ product.variants.first.inventory_quantity }}"/>
+            {% endif %}
+
+            {% comment %} 購入数選択ボタン {% endcomment %}
+            <div class="product-quantity-wrapper">
+              <p>数量</p>
+              <div class="product-quantity">
+                <button type="button" id="minus" class="minus">ー</button>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button type="button" id="plus" class="plus">＋</button>
+              </div>
+            </div>
+            {% comment %}ここまで 購入数選択ボタン {% endcomment %}
+            <div class="cart-btn-wrapper">
+              <button type="submit" class="in-to-cart-btn cart-btn">カートに入れる</button>
+              <p class="no-stock" style="display: none;">在庫数が不足しています。</p>
+            </div>
+          </form>
+        </div> <!-- /.item-count -->
+        <script>
+          //商品のバリアント情報をJSON形式のオブジェクト配列として作成しておく
+          var productVariants = [
+            {% for variant in product.variants %}
+              {
+                "id": "{{ variant.id }}",
+                "inventory_quantity": {{ variant.inventory_quantity }},
+                "options": [{% for option in variant.options %}"{{ option }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+                "price": {{ variant.price | json }},
+                "compare_at_price": {{ variant.compare_at_price | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ];
+
+          document.addEventListener('DOMContentLoaded', function() {
+            //商品オプションのセレクト要素を取得
+            var selects = document.querySelectorAll('.product-option-select');
+
+            function updateVariant() {
+              //オプションの組み合わせからバリアントIDを取得する
+              var selectedOptions = Array.from(selects).map(select => select.value);
+              var matchingVariant = productVariants.find(variant => {
+                return selectedOptions.every((option, index) => {
+                  return variant.options[index] === option;
+                });
+              });
+
+              if (matchingVariant) {
+                //カートへ入れるボタンへバリアントIDと在庫数をセット
+                document.getElementById('VariantId').value = matchingVariant.id;
+                document.getElementById('VariantId').setAttribute('data-inventory-quantity', matchingVariant.inventory_quantity);
+
+                //通常価格と割引価格の要素を取得
+                var normalPriceElement = document.getElementById('NormalPrice');
+                var discountPriceElement = document.getElementById('DiscountPrice');
+                
+                // 割引価格が設定されているか確認
+                if (matchingVariant.compare_at_price > matchingVariant.price) {
+                  // 割引価格を表示
+                  discountPriceElement.style.display = 'block';
+                  discountPriceElement.textContent = '割引価格：¥' + (parseInt(matchingVariant.price) / 100).toLocaleString('ja-JP') + '(税抜)';
+                  // 通常価格も表示（割引前の価格）
+                  normalPriceElement.style.display = 'block';
+                  normalPriceElement.textContent = '¥' + (parseInt(matchingVariant.compare_at_price) / 100).toLocaleString('ja-JP') + '(税抜)';
+                }else {
+                  // 通常価格のみ表示
+                  normalPriceElement.style.display = 'block';
+                  normalPriceElement.textContent = '¥' + (parseInt(matchingVariant.price) / 100).toLocaleString('ja-JP') + '(税抜)';
+                  // 割引価格は非表示
+                  discountPriceElement.style.display = 'none';
+                }
+              }
+            }
+            selects.forEach(select => {
+              select.addEventListener('change', updateVariant);
+            });
+
+            updateVariant(); // 初期ロード時にも適切なバリエーションIDと価格をセット
+          });
+        </script>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var inToCartButton = document.querySelector('.in-to-cart-btn'); // typeがsubmitのボタン
+            var form = document.getElementById('AddToCartForm'); // フォームのID
+
+            form.addEventListener('submit', function(event) {
+                var quantityInputElement = document.getElementById('quantity');
+                var quantity = parseInt(quantityInputElement.value, 10); // ユーザーが入力した購入数量
+                var inventoryQuantity = parseInt(document.getElementById('VariantId').getAttribute('data-inventory-quantity'), 10);
+
+                if (quantity > inventoryQuantity) {
+                    // 在庫数を超える数量が選択された場合
+                    event.preventDefault(); // フォームの送信を阻止
+                    var noStockMessage = document.querySelector('.no-stock');
+                    noStockMessage.style.display = 'block'; // 在庫不足のメッセージを表示
+                    setTimeout(function() {
+                        noStockMessage.style.display = 'none'; // 20秒後にメッセージを非表示にする
+                    }, 20000);
+                }
+                // 在庫数以内の場合は、フォームの送信を阻止しないため、何もしない（フォームがそのまま送信される）
+            });
+          });
+        </script>
+
+        <a class="item-contact" href="/pages/contact-form/">この商品について問い合わせる</a>
+
+      </div><!-- /.detail-content -->
+
+    </div><!-- /.item-content -->
+
+  </div><!-- /.inner -->
+
+</div><!-- /.p_item -->
+
+
+{% schema %}
+  {
+    "name": "item-detail",
+    "presets": [
+      {
+        "name": "item-detail"
+      }
+    ]
+  }
+{% endschema %}
