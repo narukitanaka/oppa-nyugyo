@@ -1701,6 +1701,9 @@ top
     padding: 5rem 0 14rem;
   }
 }
+.p_item.p_item-bottom .ngc-note-attr-field {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .p_item .inner {
     max-width: 54rem;
@@ -2827,6 +2830,29 @@ top
 }
 .cart__checkout-button:hover::after {
   box-shadow: none !important;
+}
+
+/*************************************************
+  配送日時指定アプリ
+*************************************************/
+.ngc-note-attr-field input[type=text] {
+  background-color: #fff;
+}
+
+.ngc-note-attr-field input:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.ngc-note-attr-field select:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.ngc-note-attr-field label {
+  font-weight: 500;
 }
 
 /*************************************************
