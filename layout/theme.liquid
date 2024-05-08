@@ -254,6 +254,16 @@
     {% if template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
       {{ 'base.css' | asset_url | stylesheet_tag }}
       {% style %}
+        body {
+          background-color: #f4feff !important;
+        }
+        .color-scheme-1, 
+        .color-scheme-2, 
+        .color-scheme-3, 
+        .color-scheme-4, 
+        .color-scheme-5 {
+          background-color: #f4feff !important;
+        }
         main {
           padding: 150px 0 0;
         }
