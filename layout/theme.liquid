@@ -314,6 +314,12 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    {% comment %} {% if template.name == 'cart' %}
+      {{ 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css' | stylesheet_tag }}
+      {{ 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js' | script_tag }}
+      {{ 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js' | script_tag }}
+      {{ 'https://rawgit.com/jquery/jquery-ui/master/ui/i18n/datepicker-ja.js' | script_tag }}    
+    {% endif %} {% endcomment %}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

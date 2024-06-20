@@ -5,8 +5,28 @@
       <nav class="nav01">
         <ul>
           <li><a href="/pages/about/">おっぱ乳業について<br><span>ABOUT US</span></a></li>
-          <li><a class="arrow" href="/collections/all/">おっぱヨーグルト<br><span>YOGURT</span></a></li>
-          <li><a class="arrow" href="/collections/all/">じぇらーと<br><span>GELATO</span></a></li>
+          <li class="parent_pc">
+            <a class="arrow" href="/collections/yogurt/">おっぱヨーグルト<br><span>YOGURT</span></a>
+            <ul class="little-nav_pc">
+                <li>
+                  <a href="#">製品について詳しく知る</a>
+                </li>
+                <li>
+                  <a href="/collections/yogurt/">おっぱヨーグルト一覧</a>
+                </li>
+              </ul>
+          </li>
+          <li class="parent_pc">
+            <a class="arrow" href="/collections/gelato/">じぇらーと<br><span>GELATO</span></a>
+            <ul class="little-nav_pc">
+              <li>
+                <a href="#">製品について詳しく知る</a>
+              </li>
+              <li>
+                <a href="/collections/gelato/">おきなわンジェラート一覧</a>
+              </li>
+            </ul>
+          </li>
           <li><a href="/pages/guide/">初めてご利用の方へ<br><span>SHOPPING GUIDE</span></a></li>
           <li><a href="/pages/faq/">よくあるご質問<br><span>Q＆A</span></a></li>
         </ul>
@@ -17,7 +37,53 @@
           <li><a href="/account/"><img src="https://cdn.shopify.com/s/files/1/0661/0393/5125/files/icon-login.svg" alt="">ログイン</a></li>
           <li><a href="/cart/"><img src="https://cdn.shopify.com/s/files/1/0661/0393/5125/files/icon-cart.svg" alt="">カート</a></li>
         </ul>
+        <div class="hamberger-wrap">
+          <div class="hambager-content">
+            <button type="button" class="hambager">
+              <span class="c-line"></span>
+              <span class="c-line"></span>
+              <span class="c-line"></span>
+            </button>
+          </div><!-- /.hambager-content -->
+          <p class="ham-txt">メニュー</p>
+        </div>
       </nav>
     </div>
   </div>
 </header>
+
+<div class="mega-menu">
+  <div class="mega-menu_inner">
+    <nav class="nav01">
+      <ul>
+        <li class="arrow"><a href="{{ routes.root_url }}">トップページ</a></li>
+        <li class="arrow"><a href="/pages/about/">おっぱ乳業について知る</a></li>
+        <li class="arrow">
+          <a class="parent" href="#">おっぱヨーグルト</a>
+          <ul class="little-nav">
+            <li><a href="#">製品について詳しく知る</a></li>
+            <li><a href="/collections/yogurt/">おっぱヨーグルト一覧</a></li>
+          </ul>
+        </li>
+        <li class="arrow">
+          <a class="parent" href="#">おきなわンジェラート</a>
+          <ul class="little-nav">
+            <li><a href="#">製品について詳しく知る</a></li>
+            <li><a href="/collections/gelato/">おきなわンジェラート一覧</a></li>
+          </ul>
+        </li>
+        <li class="arrow"><a href="/pages/guide/">初めてご利用の方へ</a></li>
+        <li class="arrow"><a href="/pages/faq/">よくある質問</a></li>
+        <li class="arrow"><a href="/pages/company/">会社について</a></li>
+        <li class="arrow"><a href="/pages/contact-form/">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <nav class="nav02">
+      <ul>
+        <li><a href="/pages/policy/">プライバシーポリシー</a></li>
+        <li><a href="/pages/terms/">特定商取引法に基づく表記</a></li>
+      </ul>
+    </nav>
+    <div class="ushi"><img src="https://cdn.shopify.com/s/files/1/0661/0393/5125/files/ushi_menu.svg?v=1715762510" alt=""></div>
+  </div><!-- /.mega-menu_inner -->
+</div><!-- /.mega-menu -->

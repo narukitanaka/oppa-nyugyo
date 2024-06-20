@@ -447,9 +447,14 @@
       >
         {{ 'accessibility.loading' | t }}
       </p>
+      {% render 'cart-field-date' %}
+      {% render 'cart-field-time' %}
+      {% render 'cart-field-gift' %}
     </form>
+    
   </div>
 </cart-items>
+
 
 {% schema %}
 {

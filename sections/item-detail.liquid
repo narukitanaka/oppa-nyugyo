@@ -75,6 +75,12 @@
               <td>{{ product.metafields.custom._preservation }}</td>
             {% endif %}
           </tr>
+          <tr>
+            {% if product.metafields.custom._allergen != blank %}
+              <th>アレルゲン</th>
+              <td>{{ product.metafields.custom._allergen }}</td>
+            {% endif %}
+          </tr>
         </table>
 
         <div class="item-count">

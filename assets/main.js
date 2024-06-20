@@ -7,17 +7,32 @@ $('.hambager').on('click', function () {
 let navFlg = false;
 function navOpen() {
   if (!navFlg) {
-    $('.hambager-content').addClass('is-ham-open');
+    $('.hamberger-wrap').addClass('is-ham-open');
     $('.mega-menu').addClass('is-megamenu-open');
-    $('.header_inner').addClass('is-megamenu-icon');
+    $('.header-inner').addClass('is-megamenu-icon');
+    $('.ham-txt').text('閉じる');
     navFlg = true;
   } else {
-    $('.hambager-content').removeClass('is-ham-open');
+    $('.hamberger-wrap').removeClass('is-ham-open');
     $('.mega-menu').removeClass('is-megamenu-open');
-    $('.header_inner').removeClass('is-megamenu-icon');
+    $('.header-inner').removeClass('is-megamenu-icon');
+    $('.ham-txt').text('メニュー');
     navFlg = false;
   }
 }
+
+
+///////////////////////////////////////////
+//ハンバーガーメニュー アコーディオン
+///////////////////////////////////////////
+$(document).ready(function() {
+  $(".little-nav").hide();
+  $(".nav01 .parent").on('click', function() {
+    $(this).toggleClass('active');
+    $(this).next('.little-nav').slideToggle(300);
+  });
+});
+
 
 ///////////////////////////////////////////
 //スクロールフェードイン
@@ -133,11 +148,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
   //about　画像無限スライダー
   const aboutswiper = new Swiper(".about-swiper", {
     loop: true, // ループ有効
-    slidesPerView: 4, // 一度に表示する枚数
+    slidesPerView: 1.7, // 一度に表示する枚数
     speed: 10000, // ループの時間
     allowTouchMove: false, // スワイプ無効
     autoplay: {
       delay: 0, // 途切れなくループ
+    },
+    breakpoints: {
+      360: {
+        slidesPerView: 1.7,
+      },
+      768: {
+        slidesPerView: 2.5,
+      },
+      1100: {
+        slidesPerView: 4,
+      }
     },
   });
 
@@ -145,7 +171,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   var rankingswiper; 
   $(window).on('load resize', function(){
       var w = $(window).width();
-      if (w <= 1100) {
+      if (w <= 1000) {
         if (rankingswiper) {
           return;
         } else {
@@ -199,37 +225,6 @@ tl
     ease: "bounce",
   }, "-=0.5");
 
-
-
-//テキストアニメ02
-// document.querySelectorAll('.anime-ttl02').forEach(function(elem) {
-//   gsap.to(elem.querySelectorAll('h2'), {
-//     y: 0,
-//     duration: 0.5,
-//     ease: "power2.out",
-//     scrollTrigger: {
-//       trigger: elem,
-//       start: 'top 80%'
-//     }
-//   });
-// });
-
-//パララックス
-// const Parallax = document.querySelectorAll('.anime-para');
-// Parallax.forEach((Parallax) => {
-//   gsap.fromTo(Parallax.querySelector('img'), {
-//     y: -250, //　元々の位置から
-//   }, {
-//     y: -60,
-//     ease: "none",
-//     scrollTrigger: {
-//       trigger: Parallax,
-//       start: "top 70%",
-//       end: "bottom top",
-//       scrub: 1,
-//     }
-//   }); 
-// });
 
 //キャラークターがゆらゆらする
 gsap.to(".yoyo01", {rotation: 30, duration: 1.5, repeat: -1, yoyo: true})
