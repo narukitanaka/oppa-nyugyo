@@ -414,7 +414,7 @@ header .nav-list .nav01 ul li.parent_pc .little-nav_pc {
   width: 27.5rem;
   padding: 3rem 2rem 2rem 3rem;
   position: absolute;
-  bottom: -110px;
+  bottom: -80px;
   left: 0;
   background-color: #fff;
   transition: all 0.5s;
@@ -3384,6 +3384,7 @@ top
 .p_guide .wrap02 .box .flex .left .img-box {
   width: 53.7rem;
   border-radius: 1rem;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.16);
   overflow: hidden;
 }
 @media screen and (max-width: 1100px) {

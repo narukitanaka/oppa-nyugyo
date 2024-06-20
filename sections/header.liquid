@@ -5,7 +5,7 @@
       <nav class="nav01">
         <ul>
           <li><a href="/pages/about/">おっぱ乳業について<br><span>ABOUT US</span></a></li>
-          <li class="parent_pc">
+          {% comment %} <li class="parent_pc">
             <a class="arrow" href="/collections/yogurt/">おっぱヨーグルト<br><span>YOGURT</span></a>
             <ul class="little-nav_pc">
                 <li>
@@ -15,13 +15,13 @@
                   <a href="/collections/yogurt/">おっぱヨーグルト一覧</a>
                 </li>
               </ul>
-          </li>
+          </li> {% endcomment %}
           <li class="parent_pc">
             <a class="arrow" href="/collections/gelato/">じぇらーと<br><span>GELATO</span></a>
             <ul class="little-nav_pc">
-              <li>
+              {% comment %} <li>
                 <a href="#">製品について詳しく知る</a>
-              </li>
+              </li> {% endcomment %}
               <li>
                 <a href="/collections/gelato/">おきなわンジェラート一覧</a>
               </li>
@@ -58,17 +58,17 @@
       <ul>
         <li class="arrow"><a href="{{ routes.root_url }}">トップページ</a></li>
         <li class="arrow"><a href="/pages/about/">おっぱ乳業について知る</a></li>
-        <li class="arrow">
+        {% comment %} <li class="arrow">
           <a class="parent" href="#">おっぱヨーグルト</a>
           <ul class="little-nav">
             <li><a href="#">製品について詳しく知る</a></li>
             <li><a href="/collections/yogurt/">おっぱヨーグルト一覧</a></li>
           </ul>
-        </li>
+        </li> {% endcomment %}
         <li class="arrow">
           <a class="parent" href="#">おきなわンジェラート</a>
           <ul class="little-nav">
-            <li><a href="#">製品について詳しく知る</a></li>
+            {% comment %} <li><a href="#">製品について詳しく知る</a></li> {% endcomment %}
             <li><a href="/collections/gelato/">おきなわンジェラート一覧</a></li>
           </ul>
         </li>
