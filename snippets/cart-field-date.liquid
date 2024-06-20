@@ -13,21 +13,59 @@
   window.onload = function() {
     if (window.jQuery) {
       let $ = window.jQuery;
-
       $(function() {
-        $("#date").datepicker({
-          dateFormat: 'yy/mm/dd (DD)',
-          yearSuffix: '年',
-          showMonthAfterYear: true,
-          monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-          dayNames: ['日', '月', '火', '水', '木', '金', '土'],
-          dayNamesMin: ['日', '月', '火', '水', '木', '金', '土'],
-          minDate: +10, 
-          maxDate: '+6M',
-          beforeShowDay: function(date) { //月、火を選択不可にする
-            var day = date.getDay();
-            return [(day !== 1 && day !== 2), ''];
+        // 祝日APIのエンドポイント
+        const holidaysAPI = 'https://holidays-jp.github.io/api/v1/date.json';
+        $.getJSON(holidaysAPI, function(data) {
+          let holidays = Object.keys(data).map(date => date.replace(/-/g, '/'));
+          // 祝日データをコンソールに出力
+          console.log("取得した祝日:", holidays);
+          // 9営業日後の選択可能日を計算する関数
+          function calculateSelectableDate(startDate, holidays, businessDays) {
+            let currentDate = new Date(startDate);
+            let count = 0;
+            while (count < businessDays) {
+              currentDate.setDate(currentDate.getDate() + 1);
+              let day = currentDate.getDay();
+              let dateString = $.datepicker.formatDate('yy/mm/dd', currentDate);
+              // 土日および祝日を除外して営業日をカウント
+              if (day !== 0 && day !== 6 && !holidays.includes(dateString)) {
+                count++;
+                console.log("営業日としてカウント:", dateString); // 営業日としてカウントされる日付を出力
+              } else {
+                console.log("非営業日:", dateString); // 土日および祝日として除外される日付を出力
+              }
+            }
+            return currentDate;
           }
+          // 現在の日付を設定
+          var today = new Date(); // テスト用に2024年7月13日に設定
+          var selectableDate = calculateSelectableDate(today, holidays, 9); 
+          // コンソールで確認
+          console.log("選択可能開始日:", $.datepicker.formatDate('yy/mm/dd', selectableDate));
+          $("#date").datepicker({
+            dateFormat: 'yy/mm/dd (DD)',
+            yearSuffix: '年',
+            showMonthAfterYear: true,
+            monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            dayNames: ['日', '月', '火', '水', '木', '金', '土'],
+            dayNamesMin: ['日', '月', '火', '水', '木', '金', '土'],
+            minDate: 0, // 初期値を0に設定
+            maxDate: '+6M',
+            beforeShowDay: function(date) {
+              let day = date.getDay();
+              let dateString = $.datepicker.formatDate('yy/mm/dd', date);
+
+              // 月曜日、火曜日を選択不可にする（選択可能開始日以降のみ適用）
+              if (date.getTime() >= selectableDate.getTime() && (day === 1 || day === 2)) {
+                return [false, ''];
+              }
+              // 日付が選択可能開始日以降かどうかを判定
+              return [date.getTime() >= selectableDate.getTime(), ''];
+            }
+          });
+        }).fail(function() {
+          console.error("祝日データの取得に失敗しました");
         });
       });
     }
